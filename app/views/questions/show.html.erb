@@ -1,0 +1,12 @@
+<p><%= @question.user.email %></p>
+<p><%= @question.title %></p>
+<p><%= @question.question %></p>
+<p><%= @question.created_at.strftime("%A %b %d, %Y %l:%M %p") %></p>
+
+<% if current_user == @question.user %>
+  <p><%= link_to "Edit", edit_question_path(@question), :class => "btn btn-default" %></p>
+  <p><%= link_to "Delete", question_path(@question),
+                           :data => {:confirm => "You sure?",
+                                     :method => "delete"},
+                           :class => "btn btn-danger" %></p>
+<% end %>
