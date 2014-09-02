@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StackOverflowClone</title>
+  <title>Photo App</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+ <nav class="navbar navbar-inverse fixed navbar-custom" role="navigation">
+    <div class="container">
+      <ul class="nav navbar-nav title">
+          <% if current_user %>
+              <li><%= link_to "Log out", logout_path %></li>
+          <% else %>
+            <li><%= link_to "Sign Up", signup_path %></li>
+            <li><%= link_to "Log In", login_path %></li>
+          <% end %>
+      </ul>
+    </div>
+  </nav>
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <% if current_user %>
+      <p>Logged in as <%= current_user.email %></p>
+    <% end %>
+    <%= flash[:notice] %>
+    <%= yield %>
+  </div>
 </body>
 </html>

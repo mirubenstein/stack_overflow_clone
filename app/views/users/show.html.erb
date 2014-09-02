@@ -1,0 +1,17 @@
+<h1>My photos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.photos.each do |photo| %>
+      <tr>
+        <td><%= image_tag photo.photo.url(:thumb) %>"<%= photo.name %>", Created at: <%= photo.created_at.strftime("%A %b %d, %Y %l:%M %p") %></td>
+    <% end %>
+  </tbody>
+</table>
