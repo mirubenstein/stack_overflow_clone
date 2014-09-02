@@ -59,4 +59,12 @@ describe "the signin process" do
     expect(page).to have_content "was added. Thanks for asking!"
   end
 
+  it 'reroutes a user to the root route: questions#index page' do
+    visit '/login'
+    user = User.create(:email => 'user@example.com', :password => 'password')
+    fill_in 'Email', :with => 'user@example.com'
+    fill_in 'Password', :with => 'password'
+    click_button 'Log in'
+    expect(current_path).to eq root_path
+  end
 end
