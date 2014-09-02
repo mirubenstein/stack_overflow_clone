@@ -2,6 +2,9 @@
 <p><%= @question.title %></p>
 <p><%= @question.question %></p>
 <p><%= @question.created_at.strftime("%A %b %d, %Y %l:%M %p") %></p>
+<% @question.answers.each do |answer| %>
+  <p><%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %></p>
+<% end %>
 
 <% if current_user == @question.user %>
   <p><%= link_to "Edit", edit_question_path(@question), :class => "btn btn-default" %></p>
@@ -9,4 +12,8 @@
                            :data => {:confirm => "You sure?",
                                      :method => "delete"},
                            :class => "btn btn-danger" %></p>
+<% end %>
+
+<% if current_user %>
+  <%= render '/answers/form' %>
 <% end %>
