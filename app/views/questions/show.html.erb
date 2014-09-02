@@ -15,5 +15,5 @@
 <% end %>
 
 <% if current_user %>
-  <%= render '/answers/form' %>
+  <%= link_to "Answer Question", new_question_answer_path(@question, @answer), id: "new_answer", remote: true %>
 <% end %>

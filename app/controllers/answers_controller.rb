@@ -5,13 +5,22 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
   end
 
+  def new
+    @answer = Answer.new
+    @question = Question.find(params[:question_id])
+    render 'new.js.erb'
+  end
+
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.new(answer_params)
     @answer.user_id = current_user.id
     if @answer.save
+      respond_to do |format|
+        format.html { redirect_to :back}
+        format.js
+      end
       flash[:notice] = "Your answer was added."
-      redirect_to :back
     else
       render "question/#{@question.id}"
     end
