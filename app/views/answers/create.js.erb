@@ -1,0 +1,5 @@
+$('#new_answer').remove();
+$('#new_link').show();
+$('#answer_list').append('<%= j render(@answer) %>');
+$('#edit_answer_<%= @answer.id %>').submitOnCheck();
+
