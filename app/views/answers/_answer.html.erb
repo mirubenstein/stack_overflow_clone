@@ -1,1 +1,13 @@
-<p><%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %></p>
+<div class="answers" id="answer_list">
+  <h1>Best Answer</h1>
+  <% @question.answers_order.each do |answer| %>
+    <p><%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %> Votes: <%= answer.votes.count %></p>
+    <% if current_user %>
+      <%= form_for(@vote) do |f| %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :answer_id, :value => answer.id %>
+        <%= f.submit(:class => "btn btn-primary btn-xs") %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
