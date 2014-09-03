@@ -11,7 +11,8 @@
       <ul class="nav navbar-nav title">
           <li><%= link_to "StackExchange", root_path %></li>
           <% if current_user %>
-              <li><%= link_to "Log out", logout_path %></li>
+            <li><%= link_to "New Question", new_question_path %></li>
+            <li><%= link_to "Log out", logout_path %></li>
           <% else %>
             <li><%= link_to "Sign Up", signup_path %></li>
             <li><%= link_to "Log In", login_path %></li>
