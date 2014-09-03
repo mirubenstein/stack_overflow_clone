@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   resources :sessions
   resources :votes
+  resources :best_answers
 end

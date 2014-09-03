@@ -3,6 +3,7 @@ class AnswersController < ApplicationController
 
   def show
     @answer = Answer.find(params[:id])
+    @best_answer = BestAnswer.new
   end
 
   def new
