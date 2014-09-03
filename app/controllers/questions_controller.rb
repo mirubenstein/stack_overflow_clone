@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @answers = @question.answers.all
     @answer = Answer.new
+    @vote = Vote.new
   end
 
   def create

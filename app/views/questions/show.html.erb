@@ -1,11 +1,20 @@
-<p><%= @question.user.email %></p>
-<p><%= @question.title %></p>
-<p><%= @question.question %></p>
-<p><%= @question.created_at.strftime("%A %b %d, %Y %l:%M %p") %></p>
+<div class="strong">
+  <p><%= @question.user.email %></p>
+  <p><%= @question.title %></p>
+  <p><%= @question.question %></p>
+  <p><%= @question.created_at.strftime("%A %b %d, %Y %l:%M %p") %></p>
+</div>
 
 <div class="answers" id="answer_list">
 <% @question.answers.each do |answer| %>
-  <p><%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %></p>
+  <p><%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %> Votes: <%= answer.votes.count %></p>
+  <% if current_user %>
+    <%= form_for(@vote) do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :answer_id, :value => answer.id %>
+      <%= f.submit(:class => "btn btn-primary btn-xs") %>
+    <% end %>
+  <% end %>
 <% end %>
 </div>
 
