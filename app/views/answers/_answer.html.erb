@@ -1,6 +1,10 @@
 <div id="answer_<%= answer.id %>" class="row">
   <div class="col-md-1">
-    <p>test</p>
+    <%= form_for (@best_answer) do |f| %>
+      <%= f.hidden_field :question_id, :value => @question.id %>
+      <%= f.hidden_field :answer_id, :value => answer.id %>
+      <%= f.submit(:class => "btn btn-primary btn-xs", value: "Best") %>
+    <% end %>
   </div>
   <div class="col-md-8">
     <p>
