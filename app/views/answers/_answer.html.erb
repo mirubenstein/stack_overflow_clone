@@ -1,1 +1,5 @@
-<p><%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %> Votes: <%= answer.votes.count %></p>
+<p id="answer_<%= answer.id %>">
+  <%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %>
+  Votes: <%= answer.votes.count %>
+  <%= link_to "(remove)", question_answer_path(@question, answer), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+</p>
