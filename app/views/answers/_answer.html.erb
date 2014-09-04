@@ -1,5 +1,14 @@
-<p id="answer_<%= answer.id %>">
-  <%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %>
-  Votes: <%= answer.votes.count %>
-  <%= link_to "(remove)", question_answer_path(@question, answer), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
-</p>
+<div id="answer_<%= answer.id %>" class="row">
+  <div class="col-md-1">
+    <p>test</p>
+  </div>
+  <div class="col-md-8">
+    <p>
+      <%= answer.answer %>, <%= answer.created_at.strftime("%A %b %d, %Y %l:%M %p") %>
+      Votes: <%= answer.votes.count %>
+      <% if current_user == @question.user %>
+        <%= link_to "(remove)", question_answer_path(@question, answer), method: :delete, data: {confirm: "Are you sure?"}, remote: true %>
+      <% end %>
+    </p>
+  </div>
+</div>

@@ -5,6 +5,12 @@
   <p><%= @question.created_at.strftime("%A %b %d, %Y %l:%M %p") %></p>
 </div>
 
+<div class="row">
+  <div class="col-md-1">
+    <p>Best Answer</p>
+  </div>
+</div>
+
 <div class="answers" id="answer_list">
   <%= render @question.answers %>
 </div>
