@@ -22,7 +22,8 @@ describe "Questions" do
       question = user.questions.create(title: 'test title', question: 'test question')
       visit "/questions/#{question.id}"
       click_link "Answer Question"
-      fill_in 'Answer', :with => ''
-
+      fill_in 'Answer', :with => 'test answer'
+      click_button "Create Answer"
+      expect(page).to have_content "test answer"
     end
 end
